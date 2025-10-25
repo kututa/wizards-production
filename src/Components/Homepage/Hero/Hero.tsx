@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
             World-Class Marketing
             <br />
             <span className={styles.made}>Made</span>{" "}
-            <span className={styles.simple}>Simple</span>
+            <span className={styles.simple}style={{fontFamily: 'Bachelorette PERSONAL USE ONLY, cursive, sans-serif,font-weight400'}}>Simple</span>
           </h1>
 
           <p className={styles.subtitle}>
@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             simplicity and efficiency in video production.
           </p>
 
-          <a href="#get-started" className={styles.cta}>
+          <a href="#get-started" className={styles.cta} style={{fontFamily: 'Bachelorette PERSONAL USE ONLY, cursive, sans-serif'}}>
             Get Started
           </a>
         </div>

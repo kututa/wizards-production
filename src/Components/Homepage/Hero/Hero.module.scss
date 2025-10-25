@@ -54,21 +54,26 @@
   }
 }
 
+
 .cta {
   display: inline-block;
-  background: #f7941d;
+  background: #fff;
   color: #000;
+  font-family: 'Bachelorette PERSONAL USE ONLY', cursive, sans-serif;
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: 32px;
+  border: 2px solid #f7941d;
   padding: 0.8rem 2rem;
-  text-transform: uppercase;
+  font-size: 1.25rem;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 
   &:hover {
-    background: #fff;
-    color: #000;
-    transform: translateY(-2px);
+    background: #f7941d;
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-2px) scale(1.04);
   }
 }
 
@@ -186,37 +191,43 @@
   }
 }
 
+
 .brandLogos {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2rem 3rem;
+  gap: 2.5rem 4rem;
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 
   img {
-    height: 36px;
+    height: 56px;
     width: auto;
-    opacity: 0.9;
+    opacity: 0.95;
     filter: grayscale(100%);
     transition: all 0.25s ease;
 
     &:hover {
       filter: none;
       opacity: 1;
-      transform: scale(1.08);
+      transform: scale(1.12);
+    }
+
+    @media (max-width: 900px) {
+      height: 40px;
+      gap: 2rem 2.5rem;
     }
 
     @media (max-width: 768px) {
-      height: 28px;
+      height: 32px;
       gap: 1.5rem 2rem;
     }
 
     @media (max-width: 480px) {
-      height: 24px;
-      gap: 1rem 1.5rem;
+      height: 36px;
+      gap: 1.5rem 2rem;
     }
   }
 }

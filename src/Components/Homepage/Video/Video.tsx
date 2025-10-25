@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./Video.module.scss";
 
 const videoCategories = [
@@ -9,8 +10,12 @@ const videoCategories = [
   { title: 'Motion Graphics', image: '/images/6fb03863720e6c5cc81aec3ce2e21d387130b8cc.jpg' },
   { title: 'Interviews', image: '/images/runer.jpg' },
   { title: 'Photography', image: '/images/soda.jpg' },
-  { title: 'Advertisement', image: '/images/ba635d36a99321e5398308086e4b282e9eedf3da.png' },
-  { title: 'Documentary', image: '/images/adec059bc61f92552eb251aceed7fbd58d10c12e.png' },
+  { title: 'Advertisement', image: '/images/4.jpg' },
+  { title: 'Documentary', image: '/images/5.jpg' },
+    { title: 'Documentary', image: '/images/8.jpg' },
+  { title: 'Documentary', image: '/images/9.jpg' },
+  { title: 'Documentary', image: '/images/77.jpg' },
+
 ];
 
 const clientLogos = [
@@ -24,7 +29,7 @@ const clientLogos = [
   '/images/king.png',
   '/images/logo1.png',
   '/images/sha.png',
-  '/images/solai.jpg',
+  '/images/cafe.png',
   '/images/white-01.png',
 ];
 
@@ -44,11 +49,18 @@ const Video = () => (
           <span className={styles.cardTitle}>{cat.title}</span>
         </div>
       ))}
-    </div>
     <div className={styles.logos}>
       {clientLogos.map((logo, idx) => (
-        <img key={idx} src={logo} alt="Client logo" className={styles.logoImg} />
+        <Image
+          key={idx}
+          src={logo}
+          alt="Client logo"
+          width={120}
+          height={60}
+          className={styles.logoImg}
+        />
       ))}
+    </div>
     </div>
   </section>
 );

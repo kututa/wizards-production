@@ -1,6 +1,146 @@
+
+
 .footer {
   background: #222;
   color: #fff;
-  padding: 1rem;
-  text-align: center;
+  padding: 2.5rem 0 1.2rem 0;
+  font-family: inherit;
+  width: 100%;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 98vw;
+  margin: 0 auto;
+  padding: 0 3vw;
+}
+
+.logoSection {
+  flex: 1 1 180px;
+  display: flex;
+  align-items: flex-start;
+  min-width: 160px;
+}
+.logoText {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+.logoSub {
+  font-size: 0.8rem;
+  font-family: inherit;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+}
+
+.navLinks {
+  flex: 2 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.navLinks a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navLinks a:hover {
+  color: #f9a825;
+}
+
+.socialSection {
+  flex: 1 1 180px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.2rem;
+  min-width: 160px;
+}
+.socialIcon {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+.socialIcon:hover {
+  transform: scale(1.15);
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 98vw;
+  margin: 1.5rem auto 0 auto;
+  padding: 0 3vw;
+  flex-wrap: wrap;
+}
+.policyLinks {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.policyLinks a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.98rem;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.policyLinks a:hover {
+  color: #f9a825;
+}
+.siteBy {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .topRow, .bottomRow {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 4vw;
+    max-width: 100vw;
+  }
+  .logoSection, .socialSection {
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+  }
+  .navLinks {
+    gap: 1.2rem;
+    margin-bottom: 1rem;
+    justify-content: flex-start;
+  }
+  .policyLinks {
+    gap: 1.2rem;
+    margin-bottom: 1rem;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 1.2rem 0 0.8rem 0;
+  }
+  .topRow, .bottomRow {
+    padding: 0 2vw;
+  }
+  .logoText {
+    font-size: 1.3rem;
+  }
+  .navLinks a, .policyLinks a {
+    font-size: 0.95rem;
+  }
+  .siteBy {
+    font-size: 0.95rem;
+  }
 }

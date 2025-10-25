@@ -1,4 +1,80 @@
-.getInTouch {
-  padding: 3rem 1rem;
-  background: #e6fffb;
+
+/* Scoped reset for this section to avoid global.css interference */
+.getInTouchSection {
+  background: #fff;
+  color: #000;
+  text-align: center;
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.content {
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subheading {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  color: #000;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+
+.ctaButton {
+  background-color: #f9a825;
+  color: #000;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-top: 8px;
+}
+
+.ctaButton:hover {
+  background-color: #ffb300;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .getInTouchSection {
+    padding: 70px 8px;
+  }
+  .heading {
+    font-size: 1.6rem;
+  }
+  .ctaButton {
+    width: 100%;
+    padding: 16px 0;
+  }
 }
