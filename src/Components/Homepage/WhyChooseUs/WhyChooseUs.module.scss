@@ -1,4 +1,160 @@
 .whyChooseUs {
-  padding: 3rem 1rem;
-  background: #fffbe6;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  width: 100%;
+  padding: 4rem 0; /* desktop spacing */
+  position: relative;
+  overflow: hidden; /* ensure image edges behave properly */
+}
+
+/* 🌐 Content wrapper */
+.content {
+  width: 95%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 🖼️ Hero Image */
+.heroImage {
+  width: 100%;
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem; /* adds safe spacing on mobile so image doesn’t touch edges */
+}
+
+.roundedImage {
+  width: 1395px;
+  height: 785px;
+  border-radius: 30px;
+  object-fit: cover;
+  opacity: 1;
+  display: block;
+  max-width: 100%;
+}
+
+/* 🧭 Header Section */
+.headerSection {
+  text-align: left;
+  margin-bottom: 2rem;
+  padding-left: calc((100% - 95%) / 2);
+  box-sizing: border-box;
+
+  h2 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #000 !important;
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+  }
+}
+
+/* ✨ CTA Button */
+.ctaButton {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #f7941d !important;
+  border-radius: 9999px;
+  padding: 0.6rem 1.8rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+
+  &:hover {
+    background-color: #f7941d !important;
+    color: #000 !important;
+  }
+}
+
+/* 🧩 Features Grid */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: left;
+  padding: 2rem 0;
+
+  .featureItem {
+    h3 {
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #000 !important;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-family: 'Poppins', sans-serif !important;
+      font-size: 0.95rem;
+      color: #333 !important;
+      line-height: 1.6;
+    }
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 1024px) {
+  .roundedImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .headerSection {
+    padding-left: 2rem; /* maintain left alignment */
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .whyChooseUs {
+    padding-top: 1.5rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .heroImage {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0 1rem; /* prevent image from touching edges */
+    margin-bottom: 1.5rem; /* tighten vertical spacing */
+  }
+
+  .headerSection {
+    padding-left: 1rem !important;
+    text-align: left !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .whyChooseUs {
+    padding-top: 1rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .headerSection h2 {
+    font-size: 1.6rem;
+  }
+
+  .ctaButton {
+    padding: 0.45rem 1.2rem;
+  }
+
+  .heroImage {
+    padding: 0 1rem !important; /* ensures safe side gap on small phones */
+    margin-bottom: 1rem;
+  }
 }

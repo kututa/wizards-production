@@ -4,8 +4,14 @@ import React, { useEffect, useState } from 'react';
 import styles from './ConnectWallet.module.scss';
 
 declare global {
+  interface EthereumProvider {
+    request?: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
+    on?: (event: string, handler: (...args: unknown[]) => void) => void;
+    removeListener?: (event: string, handler: (...args: unknown[]) => void) => void;
+  }
+
   interface Window {
-    ethereum?: any;
+    ethereum?: EthereumProvider;
   }
 }
 
@@ -19,7 +25,8 @@ const ConnectWallet: React.FC = () => {
     const eth = window.ethereum;
     if (!eth) return;
 
-    const handleAccounts = (accounts: string[]) => {
+    const handleAccounts = (...args: unknown[]) => {
+      const accounts = args[0] as string[] | undefined;
       if (accounts && accounts.length > 0) {
         setAccount(accounts[0]);
         setError(null);
@@ -32,22 +39,29 @@ const ConnectWallet: React.FC = () => {
       setAccount(null);
     };
 
-    eth.on && eth.on('accountsChanged', handleAccounts);
-    eth.on && eth.on('disconnect', handleDisconnect);
+    if (eth.on) {
+      eth.on('accountsChanged', handleAccounts);
+      eth.on('disconnect', handleDisconnect);
+    }
 
     // optionally populate current accounts
     (async () => {
       try {
-        const accounts = await eth.request({ method: 'eth_accounts' });
-        handleAccounts(accounts);
-      } catch (err) {
+        const accounts = await eth.request?.({ method: 'eth_accounts' }) as unknown;
+        // request returns unknown, narrow to string[] when present
+        if (Array.isArray(accounts)) {
+          handleAccounts(accounts as string[]);
+        }
+      } catch {
         // ignore
       }
     })();
 
     return () => {
-      eth.removeListener && eth.removeListener('accountsChanged', handleAccounts);
-      eth.removeListener && eth.removeListener('disconnect', handleDisconnect);
+      if (eth.removeListener) {
+        eth.removeListener('accountsChanged', handleAccounts);
+        eth.removeListener('disconnect', handleDisconnect);
+      }
     };
   }, []);
 
@@ -62,18 +76,19 @@ const ConnectWallet: React.FC = () => {
       }
 
       // Recommended: use eth_requestAccounts
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      if (accounts && accounts.length > 0) {
+      const accounts = await window.ethereum.request?.({ method: 'eth_requestAccounts' }) as unknown;
+      if (Array.isArray(accounts) && accounts.length > 0) {
         setAccount(accounts[0]);
       } else {
         setError('No account returned from wallet.');
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       // Handle common user rejection
-      if (err && err.code === 4001) {
+      const e = err as { code?: number; message?: string };
+      if (e?.code === 4001) {
         setError('Connection request rejected by user.');
       } else {
-        setError(err?.message || String(err));
+        setError(e?.message ?? String(err));
       }
     } finally {
       setLoading(false);

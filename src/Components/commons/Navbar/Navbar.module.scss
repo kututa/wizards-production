@@ -1,18 +1,16 @@
 .navbar {
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  max-width: 100%;
+  z-index: 100; // increased so logo always stays visible
+  padding: 0.8rem 2rem;
   background: transparent;
   color: #fff;
+  transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  box-sizing: border-box;
-  padding: 1rem 3rem;
-  transition: background 0.3s ease, padding 0.3s ease;
 }
 
 .scrolled {
@@ -23,121 +21,128 @@
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
+  justify-content: space-between;
+  position: relative;
 }
 
+/* Left — Logo visible & close to edge */
 .left {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  padding-left: 0.5rem; // slight padding so it doesn’t touch edge
+  z-index: 101; // ensures it’s above all
 }
 
 .logo {
-  height: 48px;
+  height: 58px;
   width: auto;
+  object-fit: contain;
+  display: block;
+  filter: brightness(1.1); // makes dark logos stand out slightly
+  transition: transform 0.2s ease;
 }
 
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Center — Nav Links */
 .center {
-  display: flex;
-  justify-content: center;
-  flex: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
 }
 
 .navLinks {
   display: flex;
-  gap: 1.6rem;
+  gap: 2.5rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
-
-  li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.05rem;
-    transition: color 0.3s ease;
-  }
-
-  li a:hover {
-    color: #ffb347;
-  }
 }
 
+.navLinks a {
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #ffb347;
+}
+
+/* Right — Buttons */
 .right {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 1rem;
-  padding-right: 1.5rem;
+  padding-right: 0.5rem; // small padding so buttons don’t touch edge
 }
 
 .login {
   color: #fff;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.2s;
-}
-
-.login:hover {
-  color: #ffb347;
+  font-weight: 500;
 }
 
 .getStarted {
   background: #fff;
   color: #000;
-  border-radius: 20px;
-  padding: 0.5rem 1.25rem;
+  border-radius: 30px;
+  padding: 0.6rem 1.4rem;
   font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: all 0.25s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .getStarted:hover {
   background: #ffb347;
   color: #fff;
-  transform: translateY(-2px);
 }
 
+/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 2000;
-
-  .bar {
-    width: 26px;
-    height: 3px;
-    background: #fff;
-    margin: 4px 0;
-    border-radius: 2px;
-    transition: 0.3s;
-  }
 }
 
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+/* Mobile Menu */
 .mobileMenuOverlay {
+  display: none;
   position: fixed;
-  top: 64px;
+  top: 70px;
   left: 0;
   width: 100%;
-  height: calc(100vh - 64px);
-  background: rgba(0, 0, 0, 0.9);
-  display: none;
+  height: calc(100vh - 70px);
+  background: rgba(0, 0, 0, 0.95);
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 2rem 1rem;
+  padding-top: 2rem;
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 999;
+  transition: all 0.3s ease-in-out;
 }
 
 .mobileMenuOverlay.open {
@@ -148,52 +153,47 @@
 
 .mobileNavList {
   list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  align-items: center;
-  margin: 0;
-  padding: 0;
+  gap: 1.5rem;
+}
 
-  a {
-    color: #fff;
-    font-size: 1.1rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
+.mobileNavList a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
 
-  a:hover {
-    color: #ffb347;
-  }
+.mobileNavList a:hover {
+  color: #ffb347;
 }
 
 .mobileGetStarted a {
+  display: inline-block;
   background: #fff;
   color: #000;
-  padding: 0.6rem 1.4rem;
-  border-radius: 18px;
-  font-weight: 700;
-  margin-top: 0.8rem;
-  text-decoration: none;
-  transition: all 0.25s ease;
+  padding: 0.6rem 1.6rem;
+  border-radius: 30px;
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
-.mobileGetStarted a:hover {
-  background: #ffb347;
-  color: #fff;
-}
-
-/* 🔹 Responsive Navbar */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 900px) {
   .center {
-    display: none;
-  }
-
-  .getStarted {
     display: none;
   }
 
   .hamburger {
     display: flex;
+  }
+
+  .getStarted,
+  .login {
+    display: none;
   }
 }

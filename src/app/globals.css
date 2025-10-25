@@ -115,10 +115,41 @@ a:hover {
   border-radius: 4px;
 }
 
-/* 8️⃣ Media Queries */
-@media (max-width: 768px) {
+/* 8️⃣ Responsive Global Fixes */
+@media (max-width: 1024px) {
   .section {
     padding: var(--spacing-lg) var(--spacing-sm);
+  }
+}
+
+/* ✅ 9️⃣ Section Spacing Fix for Mobile */
+@media (max-width: 768px) {
+  section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Reduce space between stacked homepage sections */
+  .heroSection {
+    margin-bottom: 1rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  .trustedBrands {
+    margin-bottom: 1rem !important;
+  }
+
+  .whyChooseUs {
+    padding-top: 1.2rem !important;
+  }
+
+  .partnerProgram,
+  .viewOurProcess,
+  .getInTouch {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 }
 
@@ -129,5 +160,18 @@ a:hover {
 
   h1 {
     font-size: 1.8rem;
+  }
+
+  section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .heroSection {
+    padding-bottom: 0.5rem !important;
+  }
+
+  .whyChooseUs {
+    padding-top: 1rem !important;
   }
 }
