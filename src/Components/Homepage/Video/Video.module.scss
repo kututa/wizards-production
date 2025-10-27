@@ -1,140 +1,165 @@
 .videoSection {
-  background: #444;
-  padding: 48px 0 32px 0;
+  background: #2a2a2a;
+  padding: 80px 0 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
   width: 100%;
 }
 
+/* 🧭 Header styling */
 .header {
   text-align: center;
   color: #fff;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #dcdcdc;
+    line-height: 1.5;
+  }
 }
 
-.header h2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  line-height: 1.2;
-}
-
-.header p {
-  font-size: 1.1rem;
-  color: #e0e0e0;
-}
-
-/* ✅ Wider grid, closer to page edges */
+/* 🧱 Grid — wide layout with edge spacing */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
   width: 100%;
-  max-width: 1400px; /* gives a wider layout */
-  margin: 0 auto 48px auto;
-  padding: 0 40px; /* small breathing space on sides */
+  max-width: 1600px;
+  margin: 0 auto 60px auto;
+  padding: 0 80px;
 }
 
-/* ✅ Cards remain the same */
+/* 🎞️ Category cards — centered titles */
 .card {
   position: relative;
   background-size: cover;
   background-position: center;
-  border-radius: 16px;
-  min-height: 140px;
+  border-radius: 14px;
+  height: 180px;
   display: flex;
-  align-items: flex-end;
+  align-items: center; /* ✅ vertically center title */
+  justify-content: center; /* ✅ horizontally center title */
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
-  transition: transform 0.2s;
   cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .cardTitle {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.4px;
+    text-align: center; /* ✅ center text */
+  }
 }
 
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.55) 100%);
-  z-index: 1;
-}
-
-.cardTitle {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 18px 22px;
-  width: 100%;
-  text-align: left;
-  letter-spacing: 0.5px;
-}
-
-.card:hover {
-  transform: translateY(-4px) scale(1.03);
-}
-
-/* ✅ Logos aligned more to left/right edges */
+/* 🤝 Client logos */
 .logos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* spreads logos evenly */
-  align-items: center;
-  gap: 32px 36px;
-  margin-top: 32px;
+  justify-content: center;
+  gap: 40px 50px;
   width: 100%;
-  max-width: 1400px;
-  padding: 0 40px; /* same as grid for consistent alignment */
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 80px;
 }
 
 .logoImg {
   height: 38px;
   width: auto;
-  opacity: 0.85;
+  opacity: 0.8;
   filter: grayscale(1) brightness(1.1);
-  transition: opacity 0.2s;
+  transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    filter: grayscale(0) brightness(1);
+  }
 }
 
-.logoImg:hover {
-  opacity: 1;
-  filter: grayscale(0) brightness(1);
-}
-
-/* ✅ Responsive adjustments */
-@media (max-width: 900px) {
+/* 📱 Responsive Design */
+@media (max-width: 1200px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 0 24px;
+    padding: 0 60px;
   }
 
   .logos {
-    justify-content: center;
-    padding: 0 24px;
+    padding: 0 60px;
   }
 }
 
-@media (max-width: 600px) {
-  .header h2 {
-    font-size: 1.4rem;
-  }
+@media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 16px;
-    max-width: 98vw;
-    padding: 0 16px;
+    padding: 0 40px;
   }
+
   .card {
-    min-height: 110px;
+    height: 150px;
   }
-  .logos {
-    gap: 18px 12px;
-    justify-content: center;
-    padding: 0 16px;
+
+  .header h2 {
+    font-size: 1.5rem;
   }
+
   .logoImg {
     height: 28px;
+  }
+
+  .logos {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    gap: 18px;
+    padding: 0 24px;
+  }
+
+  .header h2 {
+    font-size: 1.3rem;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    height: 130px;
+  }
+
+  .logos {
+    gap: 28px 20px;
+    padding: 0 24px;
   }
 }
